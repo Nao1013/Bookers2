@@ -2,8 +2,12 @@
 <div class="container">
   <div class="col-4">
   <h1 class="mt-3">User info</h1>
-  <%= image_tag @user.get_profile_image(100, 100) %>
- <table>
+  <table>
+    <thead>
+      <tr>
+        <th><%= image_tag @user.get_profile_image(100, 100) %></th>
+      </tr>
+    </thead>
    <tbody>
     <tr>
       <th scope="row">name</th>
