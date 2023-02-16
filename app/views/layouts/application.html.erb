@@ -22,25 +22,28 @@
            <div class="row nav justify-content-end">
            <% if user_signed_in? %>
            <ul class="list-unstyled">
-      　　  　<li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      　　  　<li class="nav-item mr-3">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"><span>Log out</span></i>
+              <% end %>
             </li>
           <% else %>
-            <li class="nav-item">
-              <%= link_to about_path do %>
-                <i class="fas fa-link"><span>About</span></i>
+            <li class="nav-item mr-3">
+              <%= link_to about_path, class:"text-white" do %>
+                <span><i class="fas fa-link"></i>About</span>
               <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to new_user_registration_path do %>
-              <i class="fad fa-user-plus"><span>Sign up</span></i>
+            <li class="nav-item mr-3">
+              <%= link_to new_user_registration_path, class:"text-white" do %>
+              <span><i class="fas fa-user-plus"></i>Sign up</span>
               <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to new_user_session_path do %>
-              <i class="fas fa-sign-in-alt"><span>Log in</span></i>
+            <li class="nav-item mr-3">
+              <%= link_to new_user_session_path, class:"text-white" do %>
+              <span><i class="fas fa-sign-in-alt"></i>Log in</span>
               <% end %>
             </li>
+            </div>
           </ul>
           <% end %>
         </div>
