@@ -7,8 +7,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(post_image_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to books_path
+    if @book.save
+       redirect_to books_path
+    else
+       render :show
+    end
   end
   
   def index
