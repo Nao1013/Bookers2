@@ -1,0 +1,20 @@
+<div class="container mt-2">
+    
+<div class="mx-auto col-5">
+    <h2>Editing Book</h2>
+    <%= form_with model: @book do |f| %>
+    <div class="form-group">
+  <label for="inputName">Title</label><br>
+  <%= f.text_field :title, autofocus: true, id:"inputTitle",  class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <label for="inputBody">Opinion</label><br>
+  <%= f.text_area :body, size: 100, autofocus: true, id:"inputBody", type: "text", class: "form-control" %><br>
+ </div>
+  <%= f.submit "Update Book", class:"btn btn-secondary" %>
+<% end %>
+
+<%= link_to "Show", book_path(@book.id) %> |
+<%= link_to "Back", user_path %>
+</div>
+</div>
