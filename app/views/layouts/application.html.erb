@@ -71,7 +71,9 @@
     </header>
           
   <main>
-   
+   <% if flash[:notice] %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
     <%= yield %>
     </main>
     
