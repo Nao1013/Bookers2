@@ -24,10 +24,16 @@
               <br>
               <%= link_to @book.user.name, user_path(@book.user_id) %>
               </td>
-              <td><%= link_to @book.title, book_path(current_user) %></td>
+              <td><%= link_to @book.title, book_path(@book.user_id) %></td>
               <td><%= @book.body %></td>
+              <% if @user.id == current_user.id do %>
               <td><%= link_to "Edit", edit_book_path(current_user), class: "btn btn-success btn-sm" %></td>
               <td><%= link_to "Delete", book_path(current_user), class: "btn btn-danger btn-sm", method: :delete, "data-confirm" => "Are you sure?" %></td>
+              <% else %>
+              <td></td>
+              <td></td>
+              <% end %>
+              <% end %>
             </tr>
           </tbody>
         </table>
