@@ -3,12 +3,13 @@ class BooksController < ApplicationController
   
   def create
     @user = current_user
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    if @book.save
+    @book_new = Book.new(book_params)
+    @book_new.user_id = current_user.id
+    if @book_new.save
        redirect_to book_path(@book.id), notice: 'You have created book successfully.'
     else
-       render :show
+       @books = Book.all
+       render :index
     end
   end
   
@@ -19,9 +20,9 @@ class BooksController < ApplicationController
   end
 
   def show
-    @user = current_user
+   @book_new = Book.new
     @book = Book.find(params[:id])
-    @book_new = Book.new
+    @user = @book.user
   end
   
   def edit
@@ -31,8 +32,11 @@ class BooksController < ApplicationController
   def update
    is_matching_login_user
    @book = Book.find(params[:id])
-    @book.update(book_params)
+  if @book.update(book_params)
     redirect_to book_path(@book.id), notice: 'You have updated book successfully.'
+  else
+    render :edit
+  end
   end
   
   def destroy
