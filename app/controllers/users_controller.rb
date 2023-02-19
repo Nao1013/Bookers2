@@ -13,8 +13,11 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(users_params)
+    if @user.update(users_params)
     redirect_to users_path(@user.id), notice: 'You updated yuor info successfully.'
+    else
+      render :edit
+    end
   end
   
   def index
